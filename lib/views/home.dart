@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:writer/routes/routes_name.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,9 +12,16 @@ class HomeView extends StatelessWidget {
         child: Column(children: [
           ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(RouteNames.account);
+                GoRouter.of(context)
+                    .goNamed(RouteNames.account, params: {"type": "login"});
               },
-              child: Text("account"))
+              child: const Text("account - login")),
+          ElevatedButton(
+              onPressed: () {
+                GoRouter.of(context)
+                    .goNamed(RouteNames.account, params: {"type": "register"});
+              },
+              child: const Text("account - register"))
         ]),
       ),
     );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../routes/routes_name.dart';
 
 class AccountView extends StatelessWidget {
-  const AccountView({super.key});
+  const AccountView({super.key, required this.type});
+  final String type;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +14,9 @@ class AccountView extends StatelessWidget {
         child: Column(children: [
           ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(RouteNames.home);
+                GoRouter.of(context).goNamed(RouteNames.home);
               },
-              child: Text("Home"))
+              child: Text("type = $type, Home"))
         ]),
       ),
     );
